@@ -198,7 +198,7 @@ The UI reads `RENDER_API_URL` at Vercel build time and sends requests to that AP
 1. Push the project to a Git provider supported by Render and Vercel. Never commit `.env`.
 2. In Render, create a **Blueprint** from the repository. Render reads [render.yaml](./render.yaml), installs the requirements, and deploys the API. Add your platform credentials in the Render service's Environment settings; do not put tokens in `render.yaml`.
 3. After the Render deploy completes, copy the service URL (for example, `https://your-service.onrender.com`).
-4. In Vercel, import the same repository and configure `RENDER_API_URL` as a project environment variable with the Render URL. Vercel uses [vercel.json](./vercel.json) and `build-vercel.js` to generate the static UI with that API address.
+4. In Vercel, import the same repository and configure `RENDER_API_URL` as a project environment variable with the Render URL. Vercel uses the **Other** framework preset, [vercel.json](./vercel.json), and `build-vercel.js` to generate the static UI with that API address. If the project dashboard still shows the FastAPI preset, change **Settings → General → Framework Preset** to **Other**.
 5. Redeploy Vercel after setting the environment variable. The web studio is at the Vercel URL; API docs and health checks link to the Render URL.
 
 Render's Blueprint prompts for the platform credentials configured with `sync: false`. Supply only the credentials for platforms you intend to use. The API currently permits cross-origin requests so the Vercel UI can call it.
